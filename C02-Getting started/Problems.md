@@ -54,4 +54,6 @@ that will allow you to prove above inequality. Your proof should use the structu
 
 **d.** What is the worst-case running time of bubblesort? How does it compare to the running time of insertion sort?
 ### `Answer`
+**(a)** TODO  
 
+**(b)** 
