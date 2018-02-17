@@ -56,4 +56,15 @@ that will allow you to prove above inequality. Your proof should use the structu
 ### `Answer`
 **(a)** TODO  
 
-**(b)** 
+**(b)** The loop invariant for the for loop of line 2-4 can be stated as:  
+*Initialization:* Loop is initialized with the last element and this should be the greatest element of the array. Also A[j] is the smallest element of the subarray A[j...n].  
+*Maintenance:* For each iteration A[j] is the smallest element of the subarray A[j...n].  
+*Termination:* Loop terminates when j = i+1. At this point first element is the smallest element as we swap A[j] = A[i+1] with A[j-1] = A[i].  
+
+**(c)** TODO  
+
+**(d)** Worst case running time of bubble sort is Θ(n<sup>2</sup>) because of the nested loop.  
+Although running time of insertion sort is Θ(n<sup>2</sup>) same as bubble sort, the number of comparison and swapping is less in insertion sort than bubble sort. So the constant factor in the running time complexities of insertion sort is less than bubble sort. So insertion sort is little better than bubble sort.
+
+***
+### Exercise 2-3
