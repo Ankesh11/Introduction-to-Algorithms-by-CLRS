@@ -103,4 +103,65 @@ Naive_poly_eval(a[],x)
 Running time of this algorithm is Θ(n<sup>2</sup>). Time complexity can be improved to Θ(nlgn) by using Θ(lgn) approach to evaluate x<sup>n</sup>.  
 This algorithm is worse than Honor's rule as its time complexity is Θ(n).  
 
-**(c)**
+**(c)** TODO  
+
+**(d)** TODO  
+
+***
+### Exercise 2-4
+**Inversions**
+Let A[1..n] be an array of n distinct numbers. If i < j and A[i] > A[j], then the pair (i, j) is called an inversion of A.
+
+**a.** List the five inversions of the array 2, 3, 8, 6, 1.
+
+**b.** What array with elements from the set {1, 2, . . . , n} has the most inversions? How many does it have?
+
+**c.** What is the relationship between the running time of insertion sort and the number of
+inversions in the input array? Justify your answer.
+
+**d.** Give an algorithm that determines the number of inversions in any permutation on n
+elements in Θ(n lg n) worst-case time. (Hint: Modify merge sort.)
+### `Answer`
+**(a)** [2, 1], [3, 1], [8, 6], [8, 1] and [6, 1]  
+
+**(b)** The array with decending order arrangement i.e. {n, n-1, n-2, ..., 3, 2, 1} has the most inversions.  
+Number of inversions = Number of ways to choose two distinct element from the above set = n(n-1)/2.  
+
+**(c)** we know that the inner while loop of insertion sort shift the elements to left to their right position. So if there is more inversion in an array, then we need to shift more elements. Hence as the number of inversions increases, running time of insertion sort increases.  
+
+**(d)**
+If we have two subarray and we need to find the number of inversions of the merged array, then we need to add number of inversions of the two subarray and the inversion during the merge step. This approach is applied below:
+```C++
+int merge(int arr[],int beg,int mid,int end){
+    int inv_count = 0;
+    int i=beg, j=mid+1, k=beg;
+    int temp[20];
+    while(i<=mid && j<=end){
+        if(arr[i]<=arr[j])
+            temp[k++] = arr[i++];
+        else{
+            temp[k++] = arr[j++];
+            /*As the left subarray and right subarray is in sorted order and when it comes that arr[j]<arr[i], then in the left subarray 
+            mid-i+1 elements are greater than arr[j]. So inversion count is increases by mid-i+1.*/
+            inv_count += mid-i+1;
+        }
+    }
+    while(i<=mid)
+        temp[k++] = arr[i++];
+    while(j<=end)
+        temp[k++] = arr[j++];
+    for(int i=beg;i<=end;i++)
+        arr[i] = temp[i];
+    return inv_count;
+}
+int merge_sort(int arr[],int beg,int end){
+    int inv_count = 0;
+    if(beg<end){
+        int mid = (beg+end)/2;
+        inv_count = merge_sort(arr,beg,mid);
+        inv_count += merge_sort(arr,mid+1,end);
+        inv_count += merge(arr,beg,mid,end);
+    }
+    return inv_count;
+}
+```
