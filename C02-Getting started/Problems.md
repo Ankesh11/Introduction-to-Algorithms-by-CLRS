@@ -68,3 +68,21 @@ Although running time of insertion sort is Θ(n<sup>2</sup>) same as bubble sort
 
 ***
 ### Exercise 2-3
+**Correctness of Horner's rule**  
+The following code fragment implements Horner’s rule for evaluating a polynomial  
+P(x)=∑<sub>k=0 to n</sub> a<sub>k</sub>x<sup>k</sup>  
+&nbsp; &nbsp; &nbsp; = a<sub>0</sub> + x(a<sub>1</sub> + x(a<sub>2</sub> +...+x(a<sub>n-1</sub> + xa<sub>n</sub>)...)),  
+given the coefficients a<sub>0</sub>, a<sub>1</sub>, . . . , a<sub>n</sub> and a value for x:  
+1 y = 0  
+2 for i = n downto 0  
+3 &nbsp; &nbsp; y = a<sub>i</sub> + x\*y  
+**a.** In terms of Θ-notation, what is the running time of this code fragment for Horner’s rule? 
+
+**b.** Write pseudocode to implement the naive polynomial-evaluation algorithm that computes each term of the polynomial from scratch. What is the running time of this algorithm? How does it compare to Horner’s rule?  
+
+**c.** Consider the following loop invariant:  
+At the start of each iteration of the for loop of lines 2–3,  
+y = ∑<sub>k=0 to n-(i+1)</sub> a<sub>k+i+1</sub>x<sup>k</sup>  
+Interpret a summation with no terms as equaling 0. Following the structure of the loop invariant proof presented in this chapter, use this loop invariant to show that, at termination, y = ∑<sub>k=0 to n</sub>a<sub>k</sub>x<sup>k</sup>.  
+
+**d.** Conclude by arguing that the given code fragment correctly evaluates a polynomial characterized by the coefficients a<sub>0</sub>, a<sub>1</sub>, . . . , a<sub>n</sub>.
