@@ -141,8 +141,8 @@ int merge(int arr[],int beg,int mid,int end){
             temp[k++] = arr[i++];
         else{
             temp[k++] = arr[j++];
-            /*As the left subarray and right subarray is in sorted order and when it comes that arr[j]<arr[i], then in the left subarray 
-            mid-i+1 elements are greater than arr[j]. So inversion count is increases by mid-i+1.*/
+            /*As the left subarray and right subarray is in sorted order and when it comes that arr[j]<arr[i], then 
+            in the left subarray mid-i+1 elements are greater than arr[j]. So inversion count is increases by mid-i+1.*/
             inv_count += mid-i+1;
         }
     }
