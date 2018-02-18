@@ -86,3 +86,21 @@ y = ∑<sub>k=0 to n-(i+1)</sub> a<sub>k+i+1</sub>x<sup>k</sup>
 Interpret a summation with no terms as equaling 0. Following the structure of the loop invariant proof presented in this chapter, use this loop invariant to show that, at termination, y = ∑<sub>k=0 to n</sub>a<sub>k</sub>x<sup>k</sup>.  
 
 **d.** Conclude by arguing that the given code fragment correctly evaluates a polynomial characterized by the coefficients a<sub>0</sub>, a<sub>1</sub>, . . . , a<sub>n</sub>.
+### `Answer`
+**(a)** Θ(n)  
+
+**(b)** 
+```
+a[] = {a0, a1, a2, ..., an}
+Naive_poly_eval(a[],x)
+    y = 0
+    for i=0 to n
+        m = 1
+        for j=1 to i
+            m = m*x
+        y = y + a[i]*m
+```
+Running time of this algorithm is Θ(n<sup>2</sup>). Time complexity can be improved to Θ(nlgn) by using Θ(lgn) approach to evaluate x<sup>n</sup>.  
+This algorithm is worse than Honor's rule as its time complexity is Θ(n).  
+
+**(c)**
